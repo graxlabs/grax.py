@@ -22,7 +22,7 @@ print(BackupsHealth.to_json())
 # convert the object into a dict
 backups_health_dict = backups_health_instance.to_dict()
 # create an instance of BackupsHealth from a dict
-backups_health_form_dict = backups_health.from_dict(backups_health_dict)
+backups_health_from_dict = BackupsHealth.from_dict(backups_health_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

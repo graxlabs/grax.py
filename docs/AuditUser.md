@@ -24,7 +24,7 @@ print(AuditUser.to_json())
 # convert the object into a dict
 audit_user_dict = audit_user_instance.to_dict()
 # create an instance of AuditUser from a dict
-audit_user_form_dict = audit_user.from_dict(audit_user_dict)
+audit_user_from_dict = AuditUser.from_dict(audit_user_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

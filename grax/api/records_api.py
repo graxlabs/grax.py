@@ -48,7 +48,7 @@ class RecordsApi:
         org_id: StrictStr,
         object2: StrictStr,
         id: StrictStr,
-        mod: StrictStr,
+        mod: Annotated[StrictStr, Field(description="Unused.")],
         object: Annotated[Optional[StrictStr], Field(description="The child object to list.")] = None,
         fields: Annotated[Optional[StrictStr], Field(description="The fields to include in the response. Can be 'all' for all fields, 'name' for the name field, or a comma separated list of field names.")] = None,
         delete_source: Annotated[Optional[StrictStr], Field(description="The delete source to filter by, can be 'any', 'grax' or 'salesforce'.")] = None,
@@ -76,7 +76,7 @@ class RecordsApi:
         :type object2: str
         :param id: (required)
         :type id: str
-        :param mod: (required)
+        :param mod: Unused. (required)
         :type mod: str
         :param object: The child object to list.
         :type object: str
@@ -148,7 +148,7 @@ class RecordsApi:
         org_id: StrictStr,
         object2: StrictStr,
         id: StrictStr,
-        mod: StrictStr,
+        mod: Annotated[StrictStr, Field(description="Unused.")],
         object: Annotated[Optional[StrictStr], Field(description="The child object to list.")] = None,
         fields: Annotated[Optional[StrictStr], Field(description="The fields to include in the response. Can be 'all' for all fields, 'name' for the name field, or a comma separated list of field names.")] = None,
         delete_source: Annotated[Optional[StrictStr], Field(description="The delete source to filter by, can be 'any', 'grax' or 'salesforce'.")] = None,
@@ -176,7 +176,7 @@ class RecordsApi:
         :type object2: str
         :param id: (required)
         :type id: str
-        :param mod: (required)
+        :param mod: Unused. (required)
         :type mod: str
         :param object: The child object to list.
         :type object: str
@@ -248,7 +248,7 @@ class RecordsApi:
         org_id: StrictStr,
         object2: StrictStr,
         id: StrictStr,
-        mod: StrictStr,
+        mod: Annotated[StrictStr, Field(description="Unused.")],
         object: Annotated[Optional[StrictStr], Field(description="The child object to list.")] = None,
         fields: Annotated[Optional[StrictStr], Field(description="The fields to include in the response. Can be 'all' for all fields, 'name' for the name field, or a comma separated list of field names.")] = None,
         delete_source: Annotated[Optional[StrictStr], Field(description="The delete source to filter by, can be 'any', 'grax' or 'salesforce'.")] = None,
@@ -276,7 +276,7 @@ class RecordsApi:
         :type object2: str
         :param id: (required)
         :type id: str
-        :param mod: (required)
+        :param mod: Unused. (required)
         :type mod: str
         :param object: The child object to list.
         :type object: str
@@ -364,7 +364,7 @@ class RecordsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, str] = {}
+        _files: Dict[str, Union[str, bytes]] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -436,7 +436,7 @@ class RecordsApi:
     @validate_call
     def record_get(
         self,
-        object: Annotated[StrictStr, Field(description="Object name.")],
+        object: Annotated[StrictStr, Field(description="Object name, or '_infer' if you want GRAX to do a lookup based on record ID.")],
         id: Annotated[StrictStr, Field(description="ID of the record.")],
         fields: Annotated[Optional[StrictStr], Field(description="Fields to include in the response. Can be 'all' for all fields, 'name' for the name field, or a comma separated list of field names.")] = None,
         _request_timeout: Union[
@@ -455,7 +455,7 @@ class RecordsApi:
         """Get record
 
 
-        :param object: Object name. (required)
+        :param object: Object name, or '_infer' if you want GRAX to do a lookup based on record ID. (required)
         :type object: str
         :param id: ID of the record. (required)
         :type id: str
@@ -512,7 +512,7 @@ class RecordsApi:
     @validate_call
     def record_get_with_http_info(
         self,
-        object: Annotated[StrictStr, Field(description="Object name.")],
+        object: Annotated[StrictStr, Field(description="Object name, or '_infer' if you want GRAX to do a lookup based on record ID.")],
         id: Annotated[StrictStr, Field(description="ID of the record.")],
         fields: Annotated[Optional[StrictStr], Field(description="Fields to include in the response. Can be 'all' for all fields, 'name' for the name field, or a comma separated list of field names.")] = None,
         _request_timeout: Union[
@@ -531,7 +531,7 @@ class RecordsApi:
         """Get record
 
 
-        :param object: Object name. (required)
+        :param object: Object name, or '_infer' if you want GRAX to do a lookup based on record ID. (required)
         :type object: str
         :param id: ID of the record. (required)
         :type id: str
@@ -588,7 +588,7 @@ class RecordsApi:
     @validate_call
     def record_get_without_preload_content(
         self,
-        object: Annotated[StrictStr, Field(description="Object name.")],
+        object: Annotated[StrictStr, Field(description="Object name, or '_infer' if you want GRAX to do a lookup based on record ID.")],
         id: Annotated[StrictStr, Field(description="ID of the record.")],
         fields: Annotated[Optional[StrictStr], Field(description="Fields to include in the response. Can be 'all' for all fields, 'name' for the name field, or a comma separated list of field names.")] = None,
         _request_timeout: Union[
@@ -607,7 +607,7 @@ class RecordsApi:
         """Get record
 
 
-        :param object: Object name. (required)
+        :param object: Object name, or '_infer' if you want GRAX to do a lookup based on record ID. (required)
         :type object: str
         :param id: ID of the record. (required)
         :type id: str
@@ -677,7 +677,7 @@ class RecordsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, str] = {}
+        _files: Dict[str, Union[str, bytes]] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -996,7 +996,7 @@ class RecordsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, str] = {}
+        _files: Dict[str, Union[str, bytes]] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1310,7 +1310,7 @@ class RecordsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, str] = {}
+        _files: Dict[str, Union[str, bytes]] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

@@ -25,7 +25,7 @@ print(DeletionRecord.to_json())
 # convert the object into a dict
 deletion_record_dict = deletion_record_instance.to_dict()
 # create an instance of DeletionRecord from a dict
-deletion_record_form_dict = deletion_record.from_dict(deletion_record_dict)
+deletion_record_from_dict = DeletionRecord.from_dict(deletion_record_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -34,11 +34,13 @@ class SearchCreate(BaseModel):
     notify: Optional[StrictBool] = Field(default=None, description="Whether to notify when the search is complete.")
     object: Optional[StrictStr] = Field(default=None, description="Object to search.")
     reverse: Optional[StrictBool] = Field(default=None, description="Whether to search in reverse order.")
-    status: Optional[StrictStr] = Field(default=None, description="Status of the records to search.")
+    status: Optional[StrictStr] = Field(default=None, description="Status of the records to search. Can be 'deleted', 'archived', 'archivedDeleted' or 'live'. Defaults to 'all'.")
+    status_at: Optional[StrictStr] = Field(default=None, description="Consider Status at record modified if 'modified' or latest within range if 'range'. Defaults to consider at latest.", alias="statusAt")
+    status_at_modified: Optional[StrictBool] = Field(default=None, description="Unused.", alias="statusAtModified")
     time_field: Optional[StrictStr] = Field(default=None, description="Time field to search. Can be 'createdAt', 'modifiedAt', 'latestModifiedAt', 'rangeLatestModifiedAt', 'allModifiedAt', 'deletedAt' or 'purgedAt'. Defaults to 'createdAt'.", alias="timeField")
     time_field_max: Optional[datetime] = Field(default=None, description="Maximum time for the search.", alias="timeFieldMax")
     time_field_min: Optional[datetime] = Field(default=None, description="Minimum time for the search.", alias="timeFieldMin")
-    __properties: ClassVar[List[str]] = ["filters", "limits", "notify", "object", "reverse", "status", "timeField", "timeFieldMax", "timeFieldMin"]
+    __properties: ClassVar[List[str]] = ["filters", "limits", "notify", "object", "reverse", "status", "statusAt", "statusAtModified", "timeField", "timeFieldMax", "timeFieldMin"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -103,6 +105,8 @@ class SearchCreate(BaseModel):
             "object": obj.get("object"),
             "reverse": obj.get("reverse"),
             "status": obj.get("status"),
+            "statusAt": obj.get("statusAt"),
+            "statusAtModified": obj.get("statusAtModified"),
             "timeField": obj.get("timeField"),
             "timeFieldMax": obj.get("timeFieldMax"),
             "timeFieldMin": obj.get("timeFieldMin")

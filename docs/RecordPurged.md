@@ -24,7 +24,7 @@ print(RecordPurged.to_json())
 # convert the object into a dict
 record_purged_dict = record_purged_instance.to_dict()
 # create an instance of RecordPurged from a dict
-record_purged_form_dict = record_purged.from_dict(record_purged_dict)
+record_purged_from_dict = RecordPurged.from_dict(record_purged_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

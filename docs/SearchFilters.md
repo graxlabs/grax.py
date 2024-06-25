@@ -24,7 +24,7 @@ print(SearchFilters.to_json())
 # convert the object into a dict
 search_filters_dict = search_filters_instance.to_dict()
 # create an instance of SearchFilters from a dict
-search_filters_form_dict = search_filters.from_dict(search_filters_dict)
+search_filters_from_dict = SearchFilters.from_dict(search_filters_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

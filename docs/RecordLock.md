@@ -25,7 +25,7 @@ print(RecordLock.to_json())
 # convert the object into a dict
 record_lock_dict = record_lock_instance.to_dict()
 # create an instance of RecordLock from a dict
-record_lock_form_dict = record_lock.from_dict(record_lock_dict)
+record_lock_from_dict = RecordLock.from_dict(record_lock_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

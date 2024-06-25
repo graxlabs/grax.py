@@ -16,6 +16,8 @@ docs/DeletionsPage.md
 docs/Error.md
 docs/ErrorBody.md
 docs/Object.md
+docs/ObjectField.md
+docs/ObjectFieldsPage.md
 docs/ObjectsApi.md
 docs/ObjectsPage.md
 docs/Record.md
@@ -35,6 +37,7 @@ docs/RecordsUnlockRequest.md
 docs/Search.md
 docs/SearchApi.md
 docs/SearchCreate.md
+docs/SearchFavoriteRequest.md
 docs/SearchFieldFilter.md
 docs/SearchFilters.md
 docs/SearchLimits.md
@@ -66,6 +69,8 @@ grax/models/deletions_page.py
 grax/models/error.py
 grax/models/error_body.py
 grax/models/object.py
+grax/models/object_field.py
+grax/models/object_fields_page.py
 grax/models/objects_page.py
 grax/models/record.py
 grax/models/record_children_page.py
@@ -81,6 +86,7 @@ grax/models/records_page.py
 grax/models/records_unlock_request.py
 grax/models/search.py
 grax/models/search_create.py
+grax/models/search_favorite_request.py
 grax/models/search_field_filter.py
 grax/models/search_filters.py
 grax/models/search_limits.py
@@ -95,4 +101,7 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_object_field.py
+test/test_object_fields_page.py
+test/test_search_favorite_request.py
 tox.ini

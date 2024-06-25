@@ -23,7 +23,7 @@ print(RecordField.to_json())
 # convert the object into a dict
 record_field_dict = record_field_instance.to_dict()
 # create an instance of RecordField from a dict
-record_field_form_dict = record_field.from_dict(record_field_dict)
+record_field_from_dict = RecordField.from_dict(record_field_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -23,7 +23,7 @@ print(DeletionRecordsPage.to_json())
 # convert the object into a dict
 deletion_records_page_dict = deletion_records_page_instance.to_dict()
 # create an instance of DeletionRecordsPage from a dict
-deletion_records_page_form_dict = deletion_records_page.from_dict(deletion_records_page_dict)
+deletion_records_page_from_dict = DeletionRecordsPage.from_dict(deletion_records_page_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

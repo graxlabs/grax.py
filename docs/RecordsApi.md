@@ -48,7 +48,7 @@ with grax.ApiClient(configuration) as api_client:
     org_id = 'org_id_example' # str | 
     object2 = 'object_example' # str | 
     id = 'id_example' # str | 
-    mod = 'mod_example' # str | 
+    mod = 'mod_example' # str | Unused.
     object = 'object_example' # str | The child object to list. (optional)
     fields = 'fields_example' # str | The fields to include in the response. Can be 'all' for all fields, 'name' for the name field, or a comma separated list of field names. (optional)
     delete_source = 'delete_source_example' # str | The delete source to filter by, can be 'any', 'grax' or 'salesforce'. (optional)
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
  **org_id** | **str**|  | 
  **object2** | **str**|  | 
  **id** | **str**|  | 
- **mod** | **str**|  | 
+ **mod** | **str**| Unused. | 
  **object** | **str**| The child object to list. | [optional] 
  **fields** | **str**| The fields to include in the response. Can be &#39;all&#39; for all fields, &#39;name&#39; for the name field, or a comma separated list of field names. | [optional] 
  **delete_source** | **str**| The delete source to filter by, can be &#39;any&#39;, &#39;grax&#39; or &#39;salesforce&#39;. | [optional] 
@@ -139,7 +139,7 @@ configuration = grax.Configuration(
 with grax.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = grax.RecordsApi(api_client)
-    object = 'object_example' # str | Object name.
+    object = 'object_example' # str | Object name, or '_infer' if you want GRAX to do a lookup based on record ID.
     id = 'id_example' # str | ID of the record.
     fields = 'fields_example' # str | Fields to include in the response. Can be 'all' for all fields, 'name' for the name field, or a comma separated list of field names. (optional)
 
@@ -159,7 +159,7 @@ with grax.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **object** | **str**| Object name. | 
+ **object** | **str**| Object name, or &#39;_infer&#39; if you want GRAX to do a lookup based on record ID. | 
  **id** | **str**| ID of the record. | 
  **fields** | **str**| Fields to include in the response. Can be &#39;all&#39; for all fields, &#39;name&#39; for the name field, or a comma separated list of field names. | [optional] 
 

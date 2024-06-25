@@ -47,6 +47,8 @@ from grax.models.deletions_page import DeletionsPage
 from grax.models.error import Error
 from grax.models.error_body import ErrorBody
 from grax.models.object import Object
+from grax.models.object_field import ObjectField
+from grax.models.object_fields_page import ObjectFieldsPage
 from grax.models.objects_page import ObjectsPage
 from grax.models.record import Record
 from grax.models.record_children_page import RecordChildrenPage
@@ -62,6 +64,7 @@ from grax.models.records_page import RecordsPage
 from grax.models.records_unlock_request import RecordsUnlockRequest
 from grax.models.search import Search
 from grax.models.search_create import SearchCreate
+from grax.models.search_favorite_request import SearchFavoriteRequest
 from grax.models.search_field_filter import SearchFieldFilter
 from grax.models.search_filters import SearchFilters
 from grax.models.search_limits import SearchLimits

@@ -23,7 +23,7 @@ print(RecordChildrenPage.to_json())
 # convert the object into a dict
 record_children_page_dict = record_children_page_instance.to_dict()
 # create an instance of RecordChildrenPage from a dict
-record_children_page_form_dict = record_children_page.from_dict(record_children_page_dict)
+record_children_page_from_dict = RecordChildrenPage.from_dict(record_children_page_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
