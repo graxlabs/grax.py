@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**results** | **int** | Stop search after this many results are found. | [optional] 
+**results** | **int** | Stop search after this many results are found. Limited to 10 million. | [optional] 
 
 ## Example
 
@@ -22,7 +22,7 @@ print(SearchLimits.to_json())
 # convert the object into a dict
 search_limits_dict = search_limits_instance.to_dict()
 # create an instance of SearchLimits from a dict
-search_limits_form_dict = search_limits.from_dict(search_limits_dict)
+search_limits_from_dict = SearchLimits.from_dict(search_limits_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

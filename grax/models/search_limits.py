@@ -26,7 +26,7 @@ class SearchLimits(BaseModel):
     """
     SearchLimits
     """ # noqa: E501
-    results: Optional[StrictInt] = Field(default=None, description="Stop search after this many results are found.")
+    results: Optional[StrictInt] = Field(default=None, description="Stop search after this many results are found. Limited to 10 million.")
     __properties: ClassVar[List[str]] = ["results"]
 
     model_config = ConfigDict(

@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**search_create**](SearchApi.md#search_create) | **POST** /api/v2/searches | Create search
 [**search_delete**](SearchApi.md#search_delete) | **DELETE** /api/v2/searches/{id} | Delete search
 [**search_download**](SearchApi.md#search_download) | **GET** /api/v2/searches/{id}/download | Download search results
+[**search_favorite**](SearchApi.md#search_favorite) | **POST** /api/v2/searches/{id}/favorite | Favorite search
 [**search_get**](SearchApi.md#search_get) | **GET** /api/v2/searches/{id} | Get search
 [**search_records**](SearchApi.md#search_records) | **GET** /api/v2/searches/{id}/records | Read search result records
 [**searches_list**](SearchApi.md#searches_list) | **GET** /api/v2/searches | List searches
@@ -318,6 +319,84 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**4XX** | Error |  -  |
+**5XX** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **search_favorite**
+> search_favorite(id, search_favorite_request=search_favorite_request)
+
+Favorite search
+
+### Example
+
+* Bearer (GRAX Token) Authentication (bearer_token):
+
+```python
+import grax
+from grax.models.search_favorite_request import SearchFavoriteRequest
+from grax.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = grax.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (GRAX Token): bearer_token
+configuration = grax.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with grax.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = grax.SearchApi(api_client)
+    id = 'id_example' # str | ID of the search job.
+    search_favorite_request = grax.SearchFavoriteRequest() # SearchFavoriteRequest |  (optional)
+
+    try:
+        # Favorite search
+        api_instance.search_favorite(id, search_favorite_request=search_favorite_request)
+    except Exception as e:
+        print("Exception when calling SearchApi->search_favorite: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**| ID of the search job. | 
+ **search_favorite_request** | [**SearchFavoriteRequest**](SearchFavoriteRequest.md)|  | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearer_token](../README.md#bearer_token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
 **4XX** | Error |  -  |
 **5XX** | Error |  -  |
 

@@ -17,25 +17,19 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from grax.models.object_field import ObjectField
 from typing import Optional, Set
 from typing_extensions import Self
 
-class ChildRecord(BaseModel):
+class ObjectFieldsPage(BaseModel):
     """
-    ChildRecord
+    ObjectFieldsPage
     """ # noqa: E501
-    delete_source: Optional[StrictStr] = Field(default=None, description="The delete source of the record, if it has been deleted. Can be 'grax', 'salesforce', 'any' (any deleted) or 'live'.", alias="deleteSource")
-    deleted_at: Optional[datetime] = Field(default=None, description="The time the record was deleted, if it has been deleted.", alias="deletedAt")
-    fields: Optional[Dict[str, StrictStr]] = Field(default=None, description="The fields of the record, if requested.")
-    id: Optional[StrictStr] = Field(default=None, description="The ID of the record.")
-    modified_at: Optional[datetime] = Field(default=None, description="The time the record was last modified.", alias="modifiedAt")
-    name: Optional[StrictStr] = Field(default=None, description="The name of the record, if requested.")
-    object: Optional[StrictStr] = Field(default=None, description="The object of the record.")
-    salesforce_url: Optional[StrictStr] = Field(default=None, description="The Salesforce URL of the record.", alias="salesforceURL")
-    __properties: ClassVar[List[str]] = ["deleteSource", "deletedAt", "fields", "id", "modifiedAt", "name", "object", "salesforceURL"]
+    fields: Optional[List[ObjectField]] = Field(default=None, description="Fields.")
+    next_page_token: Optional[StrictStr] = Field(default=None, description="Token to retrieve the next page of results, blank if done.", alias="nextPageToken")
+    __properties: ClassVar[List[str]] = ["fields", "nextPageToken"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -55,7 +49,7 @@ class ChildRecord(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ChildRecord from a JSON string"""
+        """Create an instance of ObjectFieldsPage from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -76,11 +70,18 @@ class ChildRecord(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in fields (list)
+        _items = []
+        if self.fields:
+            for _item in self.fields:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['fields'] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ChildRecord from a dict"""
+        """Create an instance of ObjectFieldsPage from a dict"""
         if obj is None:
             return None
 
@@ -88,14 +89,8 @@ class ChildRecord(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "deleteSource": obj.get("deleteSource"),
-            "deletedAt": obj.get("deletedAt"),
-            "fields": obj.get("fields"),
-            "id": obj.get("id"),
-            "modifiedAt": obj.get("modifiedAt"),
-            "name": obj.get("name"),
-            "object": obj.get("object"),
-            "salesforceURL": obj.get("salesforceURL")
+            "fields": [ObjectField.from_dict(_item) for _item in obj["fields"]] if obj.get("fields") is not None else None,
+            "nextPageToken": obj.get("nextPageToken")
         })
         return _obj
 

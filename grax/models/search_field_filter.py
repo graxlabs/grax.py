@@ -26,7 +26,7 @@ class SearchFieldFilter(BaseModel):
     """
     SearchFieldFilter
     """ # noqa: E501
-    field: Optional[StrictStr] = None
+    var_field: Optional[StrictStr] = Field(default=None, alias="field")
     filter_type: Optional[StrictStr] = Field(default=None, alias="filterType")
     var_not: Optional[StrictBool] = Field(default=None, alias="not")
     value: Optional[StrictStr] = None

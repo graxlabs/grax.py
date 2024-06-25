@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**field** | **str** |  | [optional] 
+**var_field** | **str** |  | [optional] 
 **filter_type** | **str** |  | [optional] 
 **var_not** | **bool** |  | [optional] 
 **value** | **str** |  | [optional] 
@@ -25,7 +25,7 @@ print(SearchFieldFilter.to_json())
 # convert the object into a dict
 search_field_filter_dict = search_field_filter_instance.to_dict()
 # create an instance of SearchFieldFilter from a dict
-search_field_filter_form_dict = search_field_filter.from_dict(search_field_filter_dict)
+search_field_filter_from_dict = SearchFieldFilter.from_dict(search_field_filter_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

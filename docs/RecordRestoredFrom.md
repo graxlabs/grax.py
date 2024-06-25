@@ -26,7 +26,7 @@ print(RecordRestoredFrom.to_json())
 # convert the object into a dict
 record_restored_from_dict = record_restored_from_instance.to_dict()
 # create an instance of RecordRestoredFrom from a dict
-record_restored_from_form_dict = record_restored_from.from_dict(record_restored_from_dict)
+record_restored_from_from_dict = RecordRestoredFrom.from_dict(record_restored_from_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
