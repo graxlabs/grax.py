@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**activity_id** | **str** | ID of the activity that deleted the record. | [optional] 
+**activity_id** | **str** | Activity ID that deleted the record. | [optional] 
 **source** | **str** | Source of the delete. | [optional] 
 **time** | **datetime** | Time the record was deleted. | [optional] 
 **user** | [**AuditUser**](AuditUser.md) |  | [optional] 

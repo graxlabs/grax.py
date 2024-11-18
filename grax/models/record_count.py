@@ -18,20 +18,22 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class DeletionRecord(BaseModel):
+class RecordCount(BaseModel):
     """
-    DeletionRecord
+    RecordCount
     """ # noqa: E501
-    id: Optional[StrictStr] = None
-    modified_at: Optional[datetime] = Field(default=None, alias="modifiedAt")
-    object: Optional[StrictStr] = None
-    purged_at: Optional[datetime] = Field(default=None, alias="purgedAt")
-    __properties: ClassVar[List[str]] = ["id", "modifiedAt", "object", "purgedAt"]
+    created: Optional[StrictInt] = Field(default=None, description="Count of records created. Only applies to records with a CreatedDate field.")
+    deleted_by_grax: Optional[StrictInt] = Field(default=None, description="Count of records archived with GRAX.", alias="deletedByGrax")
+    deleted_by_source: Optional[StrictInt] = Field(default=None, description="Count of records deleted directly in Salesforce.", alias="deletedBySource")
+    group: Optional[datetime] = Field(default=None, description="Timestamp corresponding to the beginning of the group (hour, day, month or year), if any.")
+    modified: Optional[StrictInt] = Field(default=None, description="Count of records modified; Does not consider records created and then modified in the group.")
+    object: Optional[StrictStr] = Field(default=None, description="The object name; empty when representing all objects.")
+    __properties: ClassVar[List[str]] = ["created", "deletedByGrax", "deletedBySource", "group", "modified", "object"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -51,7 +53,7 @@ class DeletionRecord(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of DeletionRecord from a JSON string"""
+        """Create an instance of RecordCount from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -76,7 +78,7 @@ class DeletionRecord(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of DeletionRecord from a dict"""
+        """Create an instance of RecordCount from a dict"""
         if obj is None:
             return None
 
@@ -84,10 +86,12 @@ class DeletionRecord(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id": obj.get("id"),
-            "modifiedAt": obj.get("modifiedAt"),
-            "object": obj.get("object"),
-            "purgedAt": obj.get("purgedAt")
+            "created": obj.get("created"),
+            "deletedByGrax": obj.get("deletedByGrax"),
+            "deletedBySource": obj.get("deletedBySource"),
+            "group": obj.get("group"),
+            "modified": obj.get("modified"),
+            "object": obj.get("object")
         })
         return _obj
 

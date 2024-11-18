@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**email** | **str** | The email of the user. | [optional] 
-**id** | **str** | The ID of the user. | [optional] 
-**name** | **str** | The username of the user. | [optional] 
+**email** | **str** | User email. | [optional] 
+**id** | **str** | User ID. | [optional] 
+**name** | **str** | User name. | [optional] 
 
 ## Example
 

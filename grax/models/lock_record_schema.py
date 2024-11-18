@@ -17,21 +17,17 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class DeletionRecord(BaseModel):
+class LockRecordSchema(BaseModel):
     """
-    DeletionRecord
+    LockRecordSchema
     """ # noqa: E501
-    id: Optional[StrictStr] = None
-    modified_at: Optional[datetime] = Field(default=None, alias="modifiedAt")
-    object: Optional[StrictStr] = None
-    purged_at: Optional[datetime] = Field(default=None, alias="purgedAt")
-    __properties: ClassVar[List[str]] = ["id", "modifiedAt", "object", "purgedAt"]
+    note: Optional[StrictStr] = Field(default=None, description="Note about the lock.")
+    __properties: ClassVar[List[str]] = ["note"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -51,7 +47,7 @@ class DeletionRecord(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of DeletionRecord from a JSON string"""
+        """Create an instance of LockRecordSchema from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -76,7 +72,7 @@ class DeletionRecord(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of DeletionRecord from a dict"""
+        """Create an instance of LockRecordSchema from a dict"""
         if obj is None:
             return None
 
@@ -84,10 +80,7 @@ class DeletionRecord(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id": obj.get("id"),
-            "modifiedAt": obj.get("modifiedAt"),
-            "object": obj.get("object"),
-            "purgedAt": obj.get("purgedAt")
+            "note": obj.get("note")
         })
         return _obj
 

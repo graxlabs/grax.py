@@ -6,9 +6,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **locked** | **datetime** | Time the record was locked. If not present, the record is not locked. | [optional] 
-**locked_id** | **str** | ID of the record causing this record to be locked | [optional] 
-**note** | **str** | Note about the lock | [optional] 
-**user_id** | **str** | ID of the user who locked the record | [optional] 
+**locked_id** | **str** | Record ID causing this record to be locked. | [optional] 
+**note** | **str** | Note about the lock. | [optional] 
+**user_id** | **str** | User ID that locked the record. | [optional] 
 
 ## Example
 

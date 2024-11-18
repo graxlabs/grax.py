@@ -17,21 +17,18 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
+from grax.models.record_lock_id import RecordLockID
 from typing import Optional, Set
 from typing_extensions import Self
 
-class DeletionRecord(BaseModel):
+class LockObjectRecordsSchema(BaseModel):
     """
-    DeletionRecord
+    LockObjectRecordsSchema
     """ # noqa: E501
-    id: Optional[StrictStr] = None
-    modified_at: Optional[datetime] = Field(default=None, alias="modifiedAt")
-    object: Optional[StrictStr] = None
-    purged_at: Optional[datetime] = Field(default=None, alias="purgedAt")
-    __properties: ClassVar[List[str]] = ["id", "modifiedAt", "object", "purgedAt"]
+    ids: Optional[List[RecordLockID]] = Field(default=None, description="Record IDs to lock.")
+    __properties: ClassVar[List[str]] = ["ids"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -51,7 +48,7 @@ class DeletionRecord(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of DeletionRecord from a JSON string"""
+        """Create an instance of LockObjectRecordsSchema from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -72,11 +69,23 @@ class DeletionRecord(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in ids (list)
+        _items = []
+        if self.ids:
+            for _item in self.ids:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['ids'] = _items
+        # set to None if ids (nullable) is None
+        # and model_fields_set contains the field
+        if self.ids is None and "ids" in self.model_fields_set:
+            _dict['ids'] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of DeletionRecord from a dict"""
+        """Create an instance of LockObjectRecordsSchema from a dict"""
         if obj is None:
             return None
 
@@ -84,10 +93,7 @@ class DeletionRecord(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id": obj.get("id"),
-            "modifiedAt": obj.get("modifiedAt"),
-            "object": obj.get("object"),
-            "purgedAt": obj.get("purgedAt")
+            "ids": [RecordLockID.from_dict(_item) for _item in obj["ids"]] if obj.get("ids") is not None else None
         })
         return _obj
 

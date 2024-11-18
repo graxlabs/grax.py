@@ -15,6 +15,8 @@ docs/DeletionRecordsPage.md
 docs/DeletionsPage.md
 docs/Error.md
 docs/ErrorBody.md
+docs/LockObjectRecordsSchema.md
+docs/LockRecordSchema.md
 docs/Object.md
 docs/ObjectField.md
 docs/ObjectFieldsPage.md
@@ -22,6 +24,8 @@ docs/ObjectsApi.md
 docs/ObjectsPage.md
 docs/Record.md
 docs/RecordChildrenPage.md
+docs/RecordCount.md
+docs/RecordCounts.md
 docs/RecordDeleted.md
 docs/RecordField.md
 docs/RecordLock.md
@@ -31,9 +35,7 @@ docs/RecordPurged.md
 docs/RecordRestoredFrom.md
 docs/RecordVersionsPage.md
 docs/RecordsApi.md
-docs/RecordsLockRequest.md
 docs/RecordsPage.md
-docs/RecordsUnlockRequest.md
 docs/Search.md
 docs/SearchApi.md
 docs/SearchCreate.md
@@ -44,6 +46,7 @@ docs/SearchLimits.md
 docs/SearchRecord.md
 docs/SearchRecordsPage.md
 docs/SearchesPage.md
+docs/UnlockObjectRecordsSchema.md
 git_push.sh
 grax/__init__.py
 grax/api/__init__.py
@@ -68,12 +71,16 @@ grax/models/deletion_records_page.py
 grax/models/deletions_page.py
 grax/models/error.py
 grax/models/error_body.py
+grax/models/lock_object_records_schema.py
+grax/models/lock_record_schema.py
 grax/models/object.py
 grax/models/object_field.py
 grax/models/object_fields_page.py
 grax/models/objects_page.py
 grax/models/record.py
 grax/models/record_children_page.py
+grax/models/record_count.py
+grax/models/record_counts.py
 grax/models/record_deleted.py
 grax/models/record_field.py
 grax/models/record_lock.py
@@ -81,9 +88,7 @@ grax/models/record_lock_id.py
 grax/models/record_purged.py
 grax/models/record_restored_from.py
 grax/models/record_versions_page.py
-grax/models/records_lock_request.py
 grax/models/records_page.py
-grax/models/records_unlock_request.py
 grax/models/search.py
 grax/models/search_create.py
 grax/models/search_favorite_request.py
@@ -93,6 +98,7 @@ grax/models/search_limits.py
 grax/models/search_record.py
 grax/models/search_records_page.py
 grax/models/searches_page.py
+grax/models/unlock_object_records_schema.py
 grax/py.typed
 grax/rest.py
 pyproject.toml
@@ -101,7 +107,9 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_object_field.py
-test/test_object_fields_page.py
-test/test_search_favorite_request.py
+test/test_lock_object_records_schema.py
+test/test_lock_record_schema.py
+test/test_record_count.py
+test/test_record_counts.py
+test/test_unlock_object_records_schema.py
 tox.ini

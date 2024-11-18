@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**activity_id** | **str** | ID of the activity that purged the record. | [optional] 
+**activity_id** | **str** | Activity ID that purged the record. | [optional] 
 **time** | **datetime** | Time the record was purged. | [optional] 
 **user** | [**AuditUser**](AuditUser.md) |  | [optional] 
 

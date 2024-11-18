@@ -44,7 +44,7 @@ configuration = grax.Configuration(
 with grax.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = grax.ObjectsApi(api_client)
-    object = 'object_example' # str | Object name.
+    object = 'Account' # str | Object name.
     operation = 'operation_example' # str | Operation type. Can be 'create', 'update', or 'upsert'. (optional)
     max_items = 56 # int | Maximum number of items to return per page. Fewer or zero may be returned. (optional)
     page_token = 'page_token_example' # str | Token returned by previous call to retrieve the subsequent page. (optional)
@@ -128,7 +128,7 @@ configuration = grax.Configuration(
 with grax.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = grax.ObjectsApi(api_client)
-    object = 'object_example' # str | Object name.
+    object = 'Account' # str | Object name.
 
     try:
         # Get object

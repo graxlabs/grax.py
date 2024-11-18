@@ -48,7 +48,7 @@ configuration = grax.Configuration(
 with grax.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = grax.SearchApi(api_client)
-    id = 'id_example' # str | ID of the search job.
+    id = 'id_example' # str | Search ID.
 
     try:
         # Abort search
@@ -64,7 +64,7 @@ with grax.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| ID of the search job. | 
+ **id** | **str**| Search ID. | 
 
 ### Return type
 
@@ -125,7 +125,7 @@ configuration = grax.Configuration(
 with grax.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = grax.SearchApi(api_client)
-    search_create = grax.SearchCreate() # SearchCreate |  (optional)
+    search_create = {"object":"Account"} # SearchCreate |  (optional)
 
     try:
         # Create search
@@ -277,7 +277,7 @@ configuration = grax.Configuration(
 with grax.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = grax.SearchApi(api_client)
-    id = 'id_example' # str | ID of the search job.
+    id = 'id_example' # str | Search ID.
     fields = 'fields_example' # str | Fields to include in the response. If not specified, all fields are included. (optional)
     latest = True # bool | Whether to download the latest version of each record. (optional)
 
@@ -297,7 +297,7 @@ with grax.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| ID of the search job. | 
+ **id** | **str**| Search ID. | 
  **fields** | **str**| Fields to include in the response. If not specified, all fields are included. | [optional] 
  **latest** | **bool**| Whether to download the latest version of each record. | [optional] 
 
@@ -359,7 +359,7 @@ configuration = grax.Configuration(
 with grax.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = grax.SearchApi(api_client)
-    id = 'id_example' # str | ID of the search job.
+    id = 'id_example' # str | Search ID.
     search_favorite_request = grax.SearchFavoriteRequest() # SearchFavoriteRequest |  (optional)
 
     try:
@@ -376,7 +376,7 @@ with grax.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| ID of the search job. | 
+ **id** | **str**| Search ID. | 
  **search_favorite_request** | [**SearchFavoriteRequest**](SearchFavoriteRequest.md)|  | [optional] 
 
 ### Return type
@@ -515,10 +515,10 @@ configuration = grax.Configuration(
 with grax.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = grax.SearchApi(api_client)
-    id = 'id_example' # str | ID of the search job.
+    id = 'id_example' # str | Search ID.
     fields = 'fields_example' # str | Fields to include in the response. Can be 'all' for all fields, 'name' for the name field, or a comma separated list of field names. (optional)
     reverse = True # bool | Search records in reverse order. (optional)
-    min_time = '2013-10-20T19:20:30+01:00' # datetime | Minimum record time to include in the response. (optional)
+    min_time = '2024-01-01T00:00Z' # datetime | Minimum record time to include in the response. (optional)
     max_items = 56 # int | Maximum number of items to return per page. Fewer or zero may be returned. (optional)
     page_token = 'page_token_example' # str | Token returned by previous call to retrieve the subsequent page. (optional)
 
@@ -538,7 +538,7 @@ with grax.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| ID of the search job. | 
+ **id** | **str**| Search ID. | 
  **fields** | **str**| Fields to include in the response. Can be &#39;all&#39; for all fields, &#39;name&#39; for the name field, or a comma separated list of field names. | [optional] 
  **reverse** | **bool**| Search records in reverse order. | [optional] 
  **min_time** | **datetime**| Minimum record time to include in the response. | [optional] 

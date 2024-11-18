@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **activity_id** | **str** | Activity ID that restored the record. | [optional] 
 **added** | **datetime** | Added time of the new record. | [optional] 
-**id** | **str** | ID of the original record. | [optional] 
+**id** | **str** | Original record ID. | [optional] 
 **modified** | **datetime** | Modified time of the original record. | [optional] 
 **user** | [**AuditUser**](AuditUser.md) |  | [optional] 
 

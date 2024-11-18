@@ -44,8 +44,8 @@ configuration = grax.Configuration(
 with grax.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = grax.DeleteForeverApi(api_client)
-    org_id = 'org_id_example' # str | 
-    id = 'id_example' # str | 
+    org_id = '00D000000000001AAA' # str | Organization ID. Can be 'fromAuth' to infer from authenticated user.
+    id = 'id_example' # str | Deletion ID.
 
     try:
         # Get Delete Forever deletion
@@ -63,8 +63,8 @@ with grax.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **org_id** | **str**|  | 
- **id** | **str**|  | 
+ **org_id** | **str**| Organization ID. Can be &#39;fromAuth&#39; to infer from authenticated user. | 
+ **id** | **str**| Deletion ID. | 
 
 ### Return type
 
@@ -124,9 +124,9 @@ configuration = grax.Configuration(
 with grax.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = grax.DeleteForeverApi(api_client)
-    org_id = 'org_id_example' # str | 
-    id = 'id_example' # str | 
-    page_size = 56 # int | Maximum number of results to return per page. (optional)
+    org_id = '00D000000000001AAA' # str | Organization ID. Can be 'fromAuth' to infer from authenticated user.
+    id = 'id_example' # str | Deletion ID.
+    page_size = 56 # int | Maximum number of results to return per page. Fewer or zero may be returned. (optional)
     page_token = 'page_token_example' # str | Token returned by previous call to retrieve the subsequent page. (optional)
 
     try:
@@ -145,9 +145,9 @@ with grax.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **org_id** | **str**|  | 
- **id** | **str**|  | 
- **page_size** | **int**| Maximum number of results to return per page. | [optional] 
+ **org_id** | **str**| Organization ID. Can be &#39;fromAuth&#39; to infer from authenticated user. | 
+ **id** | **str**| Deletion ID. | 
+ **page_size** | **int**| Maximum number of results to return per page. Fewer or zero may be returned. | [optional] 
  **page_token** | **str**| Token returned by previous call to retrieve the subsequent page. | [optional] 
 
 ### Return type
@@ -208,11 +208,11 @@ configuration = grax.Configuration(
 with grax.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = grax.DeleteForeverApi(api_client)
-    org_id = 'org_id_example' # str | 
-    min = '2013-10-20T19:20:30+01:00' # datetime | Minimum created time, inclusive. (optional)
-    max = '2013-10-20T19:20:30+01:00' # datetime | Maximum created time, exclusive. (optional)
+    org_id = '00D000000000001AAA' # str | Organization ID. Can be 'fromAuth' to infer from authenticated user.
+    min = '2024-01-01T00:00Z' # datetime | Minimum created time, inclusive. (optional)
+    max = '2024-01-01T00:00Z' # datetime | Maximum created time, exclusive. (optional)
     object = 'object_example' # str | Object name. If provided, only deletions for this object will be returned. (optional)
-    page_size = 56 # int | Maximum number of results to return per page. (optional)
+    page_size = 56 # int | Maximum number of results to return per page. Fewer or zero may be returned. (optional)
     page_token = 'page_token_example' # str | Token returned by previous call to retrieve the subsequent page. (optional)
 
     try:
@@ -231,11 +231,11 @@ with grax.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **org_id** | **str**|  | 
+ **org_id** | **str**| Organization ID. Can be &#39;fromAuth&#39; to infer from authenticated user. | 
  **min** | **datetime**| Minimum created time, inclusive. | [optional] 
  **max** | **datetime**| Maximum created time, exclusive. | [optional] 
  **object** | **str**| Object name. If provided, only deletions for this object will be returned. | [optional] 
- **page_size** | **int**| Maximum number of results to return per page. | [optional] 
+ **page_size** | **int**| Maximum number of results to return per page. Fewer or zero may be returned. | [optional] 
  **page_token** | **str**| Token returned by previous call to retrieve the subsequent page. | [optional] 
 
 ### Return type

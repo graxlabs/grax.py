@@ -1,9 +1,21 @@
-# grax
+# grax.py
 
-Generated with:
+Generated with
 
 ```
-openapi-generator generate -i grax.yaml -o . -g python --package-name grax --git-user-id graxlabs --git-repo-id grax.py
+-openapi-generator generate -i grax.yaml -o . -g python --package-name grax --git-user-id graxlabs --git-repo-id grax.py
+```
+
+This documents the APIs available in your GRAX backend.
+
+### Authentication
+
+Generate an API token to authenticate requests from your backend, going to Settings > API Tokens > New Token.
+
+Then supply it with HTTP requests in the `Authorization` header, like:
+
+```
+Authorization: Bearer grax_token_xyz
 ```
 
 
@@ -113,6 +125,7 @@ Class | Method | HTTP request | Description
 *RecordLockApi* | [**records_lock**](docs/RecordLockApi.md#records_lock) | **POST** /api/v1/salesforce/{orgID}/objects/{object}/lock | Lock multiple records
 *RecordLockApi* | [**records_unlock**](docs/RecordLockApi.md#records_unlock) | **POST** /api/v1/salesforce/{orgID}/objects/{object}/unlock | Unlock multiple records
 *RecordsApi* | [**record_children_list**](docs/RecordsApi.md#record_children_list) | **GET** /api/v1/salesforce/{orgID}/objects/{object}/records/{id}/versions/{mod}/children | List record children
+*RecordsApi* | [**record_counts_get**](docs/RecordsApi.md#record_counts_get) | **GET** /api/v2/record-counts | Get estimated record counts
 *RecordsApi* | [**record_get**](docs/RecordsApi.md#record_get) | **GET** /api/v2/objects/{object}/records/{id} | Get record
 *RecordsApi* | [**record_versions_list**](docs/RecordsApi.md#record_versions_list) | **GET** /api/v2/objects/{object}/records/{id}/versions | List record versions
 *RecordsApi* | [**records_list**](docs/RecordsApi.md#records_list) | **GET** /api/v2/objects/{object}/records | List records
@@ -138,12 +151,16 @@ Class | Method | HTTP request | Description
  - [DeletionsPage](docs/DeletionsPage.md)
  - [Error](docs/Error.md)
  - [ErrorBody](docs/ErrorBody.md)
+ - [LockObjectRecordsSchema](docs/LockObjectRecordsSchema.md)
+ - [LockRecordSchema](docs/LockRecordSchema.md)
  - [Object](docs/Object.md)
  - [ObjectField](docs/ObjectField.md)
  - [ObjectFieldsPage](docs/ObjectFieldsPage.md)
  - [ObjectsPage](docs/ObjectsPage.md)
  - [Record](docs/Record.md)
  - [RecordChildrenPage](docs/RecordChildrenPage.md)
+ - [RecordCount](docs/RecordCount.md)
+ - [RecordCounts](docs/RecordCounts.md)
  - [RecordDeleted](docs/RecordDeleted.md)
  - [RecordField](docs/RecordField.md)
  - [RecordLock](docs/RecordLock.md)
@@ -151,9 +168,7 @@ Class | Method | HTTP request | Description
  - [RecordPurged](docs/RecordPurged.md)
  - [RecordRestoredFrom](docs/RecordRestoredFrom.md)
  - [RecordVersionsPage](docs/RecordVersionsPage.md)
- - [RecordsLockRequest](docs/RecordsLockRequest.md)
  - [RecordsPage](docs/RecordsPage.md)
- - [RecordsUnlockRequest](docs/RecordsUnlockRequest.md)
  - [Search](docs/Search.md)
  - [SearchCreate](docs/SearchCreate.md)
  - [SearchFavoriteRequest](docs/SearchFavoriteRequest.md)
@@ -163,6 +178,7 @@ Class | Method | HTTP request | Description
  - [SearchRecord](docs/SearchRecord.md)
  - [SearchRecordsPage](docs/SearchRecordsPage.md)
  - [SearchesPage](docs/SearchesPage.md)
+ - [UnlockObjectRecordsSchema](docs/UnlockObjectRecordsSchema.md)
 
 
 <a id="documentation-for-authorization"></a>
