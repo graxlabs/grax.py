@@ -22,7 +22,7 @@ print(RecordsUnlockRequest.to_json())
 # convert the object into a dict
 records_unlock_request_dict = records_unlock_request_instance.to_dict()
 # create an instance of RecordsUnlockRequest from a dict
-records_unlock_request_form_dict = records_unlock_request.from_dict(records_unlock_request_dict)
+records_unlock_request_from_dict = RecordsUnlockRequest.from_dict(records_unlock_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

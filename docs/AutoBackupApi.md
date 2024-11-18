@@ -12,8 +12,6 @@ Method | HTTP request | Description
 
 Get Auto Backup health
 
-Get the health of Auto Backup.
-
 ### Example
 
 * Bearer (GRAX Token) Authentication (bearer_token):

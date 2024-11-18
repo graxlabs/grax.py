@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **record_lock**
-> record_lock(org_id, object, id)
+> record_lock(org_id, object, id, lock_record_schema=lock_record_schema)
 
 Lock single record
 
@@ -22,6 +22,7 @@ Lock single record
 
 ```python
 import grax
+from grax.models.lock_record_schema import LockRecordSchema
 from grax.rest import ApiException
 from pprint import pprint
 
@@ -45,13 +46,14 @@ configuration = grax.Configuration(
 with grax.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = grax.RecordLockApi(api_client)
-    org_id = 'org_id_example' # str | 
-    object = 'object_example' # str | 
-    id = 'id_example' # str | 
+    org_id = '00D000000000001AAA' # str | Organization ID. Can be 'fromAuth' to infer from authenticated user.
+    object = 'Account' # str | Object name.
+    id = '001000000000001AAA' # str | Record ID.
+    lock_record_schema = grax.LockRecordSchema() # LockRecordSchema |  (optional)
 
     try:
         # Lock single record
-        api_instance.record_lock(org_id, object, id)
+        api_instance.record_lock(org_id, object, id, lock_record_schema=lock_record_schema)
     except Exception as e:
         print("Exception when calling RecordLockApi->record_lock: %s\n" % e)
 ```
@@ -63,9 +65,10 @@ with grax.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **org_id** | **str**|  | 
- **object** | **str**|  | 
- **id** | **str**|  | 
+ **org_id** | **str**| Organization ID. Can be &#39;fromAuth&#39; to infer from authenticated user. | 
+ **object** | **str**| Object name. | 
+ **id** | **str**| Record ID. | 
+ **lock_record_schema** | [**LockRecordSchema**](LockRecordSchema.md)|  | [optional] 
 
 ### Return type
 
@@ -77,7 +80,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -125,9 +128,9 @@ configuration = grax.Configuration(
 with grax.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = grax.RecordLockApi(api_client)
-    org_id = 'org_id_example' # str | 
-    object = 'object_example' # str | 
-    id = 'id_example' # str | 
+    org_id = '00D000000000001AAA' # str | Organization ID. Can be 'fromAuth' to infer from authenticated user.
+    object = 'Account' # str | Object name.
+    id = '001000000000001AAA' # str | Record ID.
 
     try:
         # Get record lock
@@ -145,9 +148,9 @@ with grax.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **org_id** | **str**|  | 
- **object** | **str**|  | 
- **id** | **str**|  | 
+ **org_id** | **str**| Organization ID. Can be &#39;fromAuth&#39; to infer from authenticated user. | 
+ **object** | **str**| Object name. | 
+ **id** | **str**| Record ID. | 
 
 ### Return type
 
@@ -206,9 +209,9 @@ configuration = grax.Configuration(
 with grax.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = grax.RecordLockApi(api_client)
-    org_id = 'org_id_example' # str | 
-    object = 'object_example' # str | 
-    id = 'id_example' # str | 
+    org_id = '00D000000000001AAA' # str | Organization ID. Can be 'fromAuth' to infer from authenticated user.
+    object = 'Account' # str | Object name.
+    id = '001000000000001AAA' # str | Record ID.
 
     try:
         # Unlock single record
@@ -224,9 +227,9 @@ with grax.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **org_id** | **str**|  | 
- **object** | **str**|  | 
- **id** | **str**|  | 
+ **org_id** | **str**| Organization ID. Can be &#39;fromAuth&#39; to infer from authenticated user. | 
+ **object** | **str**| Object name. | 
+ **id** | **str**| Record ID. | 
 
 ### Return type
 
@@ -252,7 +255,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **records_lock**
-> records_lock(org_id, object, records_lock_request=records_lock_request)
+> records_lock(org_id, object, lock_object_records_schema=lock_object_records_schema)
 
 Lock multiple records
 
@@ -262,7 +265,7 @@ Lock multiple records
 
 ```python
 import grax
-from grax.models.records_lock_request import RecordsLockRequest
+from grax.models.lock_object_records_schema import LockObjectRecordsSchema
 from grax.rest import ApiException
 from pprint import pprint
 
@@ -286,13 +289,13 @@ configuration = grax.Configuration(
 with grax.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = grax.RecordLockApi(api_client)
-    org_id = 'org_id_example' # str | 
-    object = 'object_example' # str | 
-    records_lock_request = grax.RecordsLockRequest() # RecordsLockRequest |  (optional)
+    org_id = '00D000000000001AAA' # str | Organization ID. Can be 'fromAuth' to infer from authenticated user.
+    object = 'Account' # str | Object name.
+    lock_object_records_schema = {"ids":[{"id":"acc001","note":"Note on first lock"},{"id":"acc002"}]} # LockObjectRecordsSchema |  (optional)
 
     try:
         # Lock multiple records
-        api_instance.records_lock(org_id, object, records_lock_request=records_lock_request)
+        api_instance.records_lock(org_id, object, lock_object_records_schema=lock_object_records_schema)
     except Exception as e:
         print("Exception when calling RecordLockApi->records_lock: %s\n" % e)
 ```
@@ -304,9 +307,9 @@ with grax.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **org_id** | **str**|  | 
- **object** | **str**|  | 
- **records_lock_request** | [**RecordsLockRequest**](RecordsLockRequest.md)|  | [optional] 
+ **org_id** | **str**| Organization ID. Can be &#39;fromAuth&#39; to infer from authenticated user. | 
+ **object** | **str**| Object name. | 
+ **lock_object_records_schema** | [**LockObjectRecordsSchema**](LockObjectRecordsSchema.md)|  | [optional] 
 
 ### Return type
 
@@ -332,7 +335,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **records_unlock**
-> records_unlock(org_id, object, records_unlock_request=records_unlock_request)
+> records_unlock(org_id, object, unlock_object_records_schema=unlock_object_records_schema)
 
 Unlock multiple records
 
@@ -342,7 +345,7 @@ Unlock multiple records
 
 ```python
 import grax
-from grax.models.records_unlock_request import RecordsUnlockRequest
+from grax.models.unlock_object_records_schema import UnlockObjectRecordsSchema
 from grax.rest import ApiException
 from pprint import pprint
 
@@ -366,13 +369,13 @@ configuration = grax.Configuration(
 with grax.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = grax.RecordLockApi(api_client)
-    org_id = 'org_id_example' # str | 
-    object = 'object_example' # str | 
-    records_unlock_request = grax.RecordsUnlockRequest() # RecordsUnlockRequest |  (optional)
+    org_id = '00D000000000001AAA' # str | Organization ID. Can be 'fromAuth' to infer from authenticated user.
+    object = 'Account' # str | Object name.
+    unlock_object_records_schema = {"ids":["acc001","acc002"]} # UnlockObjectRecordsSchema |  (optional)
 
     try:
         # Unlock multiple records
-        api_instance.records_unlock(org_id, object, records_unlock_request=records_unlock_request)
+        api_instance.records_unlock(org_id, object, unlock_object_records_schema=unlock_object_records_schema)
     except Exception as e:
         print("Exception when calling RecordLockApi->records_unlock: %s\n" % e)
 ```
@@ -384,9 +387,9 @@ with grax.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **org_id** | **str**|  | 
- **object** | **str**|  | 
- **records_unlock_request** | [**RecordsUnlockRequest**](RecordsUnlockRequest.md)|  | [optional] 
+ **org_id** | **str**| Organization ID. Can be &#39;fromAuth&#39; to infer from authenticated user. | 
+ **object** | **str**| Object name. | 
+ **unlock_object_records_schema** | [**UnlockObjectRecordsSchema**](UnlockObjectRecordsSchema.md)|  | [optional] 
 
 ### Return type
 

@@ -23,7 +23,7 @@ print(ObjectsPage.to_json())
 # convert the object into a dict
 objects_page_dict = objects_page_instance.to_dict()
 # create an instance of ObjectsPage from a dict
-objects_page_form_dict = objects_page.from_dict(objects_page_dict)
+objects_page_from_dict = ObjectsPage.from_dict(objects_page_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
